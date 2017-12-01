@@ -1,0 +1,10 @@
+//---------------------------------------------
+*** include/part1.vm ***
+Variable set in the calling file 
+'var1' = $var1
+//
+#set($var1 = "zzz" )
+// var1 changed : $var1
+#set($var2 = 123 )
+// var2 set : $var2
+//---------------------------------------------

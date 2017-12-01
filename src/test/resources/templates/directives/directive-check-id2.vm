@@ -1,0 +1,16 @@
+
+## Template for 'error directive' test
+
+Beginning of template
+Bla bla bla
+Bla bla bla
+Context values :
+ - project = $project 
+ - name = $name 
+ - flagTrue = $flagTrue
+ - flagFalse = $flagFalse
+
+## entity2 doesn't have a PK
+#checkId($entity2)
+
+End of template

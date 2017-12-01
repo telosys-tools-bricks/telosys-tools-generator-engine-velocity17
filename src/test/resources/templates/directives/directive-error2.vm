@@ -1,0 +1,7 @@
+
+## Template for 'error directive' test
+
+Beginning of template
+Bla bla bla
+#error(badname)
+End of template

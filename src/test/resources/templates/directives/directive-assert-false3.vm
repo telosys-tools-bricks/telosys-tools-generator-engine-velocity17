@@ -1,0 +1,13 @@
+
+## Template for 'assertTrue directive' test
+
+Beginning of template
+Bla bla bla
+Context values :
+ - project = $project 
+ - name = $name 
+ - flagTrue = $flagTrue
+ - flagFalse = $flagFalse
+#assertFalse($name , 'Must be false') 
+#assertFalse($flagTrue, 'The flag must be false') ## ERROR EXPECTED HERE
+End of template

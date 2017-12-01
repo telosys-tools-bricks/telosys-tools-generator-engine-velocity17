@@ -1,0 +1,25 @@
+
+## Template for 'error directive' test
+
+Beginning of template
+Bla bla bla
+Bla bla bla
+Context values :
+ - project = $project 
+ - name = $name 
+ - flagTrue = $flagTrue
+ - flagFalse = $flagFalse
+
+## using with variable name without $
+#using('project')
+#using('name')
+#using('flagTrue')
+#using('project', 'name')
+#using('project', 'name', 'flagTrue', 'flagFalse')
+
+#using('$project')
+#using('$name')
+#using('xxx', 'yyy') ## ERROR EXPECTED HERE : 'xxx' and 'yyy' object is not defined
+#using('$project', '$name', '$flagTrue', '$flagFalse')
+
+End of template

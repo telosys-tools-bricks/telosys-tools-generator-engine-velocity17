@@ -1,0 +1,12 @@
+
+## Template for 'assertTrue directive' test
+
+Beginning of template
+Bla bla bla
+Context values :
+ - project = $project 
+ - name = $name 
+ - flagTrue = $flagTrue
+ - flagFalse = $flagFalse
+Invalid reference : $nonexistent.myMethod()
+End of template
