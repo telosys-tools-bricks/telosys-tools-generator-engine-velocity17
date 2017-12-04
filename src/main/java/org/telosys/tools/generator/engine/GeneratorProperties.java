@@ -78,10 +78,13 @@ class GeneratorProperties { // "package" visibility
 		// Set all the "user directives" ( list of classes names ) : OK, it works
 		properties.setProperty(USER_DIRECTIVE_NAME, USER_DIRECTIVE_VALUE);
 		
-		// To force the macro reloading for each execution (usefull for development mode)
+		// To force the macro reloading for each execution (usefull for development mode, no perf constraint)
 		// Constant is VM_LIBRARY_AUTORELOAD  "velocimacro.library.autoreload";
 		properties.setProperty(RuntimeConstants.VM_LIBRARY_AUTORELOAD, "true");
 		
+		// To avoid logging ( no 'velocity.log' file )
+		// runtime.log.logsystem.class=org.apache.velocity.runtime.log.NullLogChute
+		properties.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, "org.apache.velocity.runtime.log.NullLogChute");
 
 		return properties;
 	}
