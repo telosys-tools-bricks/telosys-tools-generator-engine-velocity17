@@ -1,0 +1,4 @@
+## Template for 'encoding' test
+abcdefghijk
+é è ê ë à ç ù
+name = $name

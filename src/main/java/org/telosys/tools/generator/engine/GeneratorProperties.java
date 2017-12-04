@@ -86,6 +86,11 @@ class GeneratorProperties { // "package" visibility
 		// runtime.log.logsystem.class=org.apache.velocity.runtime.log.NullLogChute
 		properties.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS, "org.apache.velocity.runtime.log.NullLogChute");
 
+		// Input and output encoding
+		final String UTF8 = "UTF-8" ;
+		properties.setProperty(RuntimeConstants.INPUT_ENCODING, UTF8);
+		properties.setProperty(RuntimeConstants.OUTPUT_ENCODING, UTF8);
+
 		return properties;
 	}
 }
