@@ -64,7 +64,7 @@ public class GeneratorEngine {
 		} catch (GeneratorEngineException e) {
 			throw e;
 		} catch (Exception e) {
-			throw new GeneratorEngineException(e);
+			throw new GeneratorEngineException(e, generatorTemplate.getTemplateFileNameInBundle());
 		}
 		finally {
 			//------------------------------------------------------------------

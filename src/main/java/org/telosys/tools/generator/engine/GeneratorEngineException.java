@@ -34,15 +34,9 @@ public class GeneratorEngineException extends Exception
     /**
      * @param cause
      */
-    public GeneratorEngineException(Throwable cause) {
-        super("Generator engine error : " + cause.getClass().getSimpleName(), cause);
+    public GeneratorEngineException(Throwable cause, String templateFileName) {
+        super("Generator engine error '" + cause.getClass().getSimpleName()
+        		+ "' in '" + templateFileName + "'", cause);
     }
 
-    /**
-     * @param message
-     * @param cause
-     */
-    public GeneratorEngineException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
