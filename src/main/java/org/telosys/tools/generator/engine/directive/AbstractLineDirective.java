@@ -62,7 +62,6 @@ public abstract class AbstractLineDirective extends Directive {
 
 	protected void checkArgumentsCount(Node node) {
 		if ( node.jjtGetNumChildren() != this.argumentsCount ) {
-			//throw new RuntimeException("#" + directiveName + " : " + argumentsCount + " argument(s) expected");
 			String message = argumentsCount + " argument(s) expected" ;
 			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
 		}
@@ -74,7 +73,6 @@ public abstract class AbstractLineDirective extends Directive {
 			return String.valueOf(o);
 		}
 		else {
-			//throw new RuntimeException("#" + directiveName + " : invalid argument #" + index + "( String expected )");
 			String message = "invalid argument #" + index + "( String expected )" ;
 			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
 		}
@@ -86,7 +84,6 @@ public abstract class AbstractLineDirective extends Directive {
 			return (Boolean) o;
 		}
 		else {
-			//throw new RuntimeException("#" + directiveName + " : invalid argument #" + index + "( Boolean expected )");
 			String message = "invalid argument #" + index + " (Boolean expected)" ;
 			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
 		}

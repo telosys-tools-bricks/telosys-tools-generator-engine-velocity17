@@ -124,17 +124,6 @@ public class GeneratorEngine {
 	private VelocityContext createVelocityContext(GeneratorContext generatorContext ) {
 		VelocityContext velocityContext = new VelocityContext(generatorContext.getMap());
 		
-//		//--- Make a cartridge to hold the event handlers 
-//		EventCartridge ec = new EventCartridge();
-//		
-//		//--- Event handler for "Invalid Reference"
-//		ec.addInvalidReferenceEventHandler( new InvalidReferenceEventImpl() );
-//		
-//		//ec.addNullSetEventHandler( new NullSetEventImpl() );
-//		
-//		//--- Finally let it attach itself to the context
-//		ec.attachToContext( velocityContext );
-		
 		GeneratorEvents.attachEvents(velocityContext);
 		
 		return velocityContext ;
