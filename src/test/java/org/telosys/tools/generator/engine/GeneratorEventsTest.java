@@ -24,7 +24,8 @@ public class GeneratorEventsTest {
 
 	//---------------------------------------------------------------------------------------
 	
-	public GeneratorEngineException generateFromTemplateFile(String bundleSubPath, String templateFile) throws GeneratorEngineException {
+	//public GeneratorEngineException generateFromTemplateFile(String bundleSubPath, String templateFile) throws GeneratorEngineException {
+	public Exception generateFromTemplateFile(String bundleSubPath, String templateFile) {
 		System.out.println("Generation from template file "  );
 		System.out.println(" . bundle sub path : " + bundleSubPath );
 		System.out.println(" . template file   : " + templateFile );
@@ -32,13 +33,15 @@ public class GeneratorEventsTest {
 		System.out.println("GeneratorTemplate created "  );
 		GeneratorEngine generatorEngine = new GeneratorEngine();
 		System.out.println("Generation... "  );
-		GeneratorEngineException exceptionCatched = null ;
+		//GeneratorEngineException exceptionCatched = null ;
+		Exception exceptionCatched = null ;
 		String result;
 		try {
 			result = generatorEngine.generate(template, getContext() );
 			System.out.println("Generation result : " );
 			System.out.println(result );
-		} catch (GeneratorEngineException e) {
+		//} catch (GeneratorEngineException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			exceptionCatched = e ;
 		}
@@ -49,54 +52,70 @@ public class GeneratorEventsTest {
 	// Directive #error
 	//---------------------------------------------------------------------------------------
 	@Test 
-	public void testInvalidReferenceGet1() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get1.vm") ;
+	public void testInvalidReferenceGet1() { //throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get1.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get1.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 	@Test 
-	public void testInvalidReferenceGet2() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get2.vm") ;
+	public void testInvalidReferenceGet2() { //throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get2.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get2.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 	@Test 
-	public void testInvalidReferenceGet3() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get3.vm") ;
+	public void testInvalidReferenceGet3() { // throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get3.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get3.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 	@Test 
-	public void testInvalidReferenceGet4() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get4.vm") ;
+	public void testInvalidReferenceGet4() { // throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get4.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get4.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 	@Test 
-	public void testInvalidReferenceGet5() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get5.vm") ;
+	public void testInvalidReferenceGet5() { // throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get5.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-get5.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 
 	@Test 
-	public void testInvalidReferenceSet1() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-set1.vm") ;
+	public void testInvalidReferenceSet1() { // throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-set1.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-set1.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 
 	@Test 
-	public void testInvalidReferenceMethod1() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-method1.vm") ;
+	public void testInvalidReferenceMethod1() { // throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-method1.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-method1.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 	@Test 
-	public void testInvalidReferenceMethod2() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-method2.vm") ;
+	public void testInvalidReferenceMethod2() { // throws GeneratorEngineException {
+		//GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-method2.vm") ;
+		Exception exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "invalid-reference-method2.vm") ;
 		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		//assertTrue( exception.getCause() instanceof InvalidReferenceException );
+		assertTrue( exception instanceof InvalidReferenceException );
 	}
 
 }

@@ -30,9 +30,10 @@ public class NullSetEventImpl implements NullSetEventHandler {
 
 	public boolean shouldLogOnNullSet( String leftHandSide, String righHandSide ) {
 
-		//--- Return value : true if log message should be written, false otherwise
-		//return false;
+		//--- Supposed to return true or false : 
+		// true if log message should be written, false otherwise
 		
+		// throws an exception instead
 		throw new RuntimeException( "#set( " + leftHandSide + " = " + righHandSide + " ) : Null value"  );
 	}
 

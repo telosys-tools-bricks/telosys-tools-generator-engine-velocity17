@@ -20,6 +20,7 @@ import java.util.Properties;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.telosys.tools.generator.engine.directive.AssertFalseDirective;
 import org.telosys.tools.generator.engine.directive.AssertTrueDirective;
+import org.telosys.tools.generator.engine.directive.CancelDirective;
 import org.telosys.tools.generator.engine.directive.CheckIdDirective;
 import org.telosys.tools.generator.engine.directive.ErrorDirective;
 import org.telosys.tools.generator.engine.directive.UsingDirective;
@@ -53,6 +54,8 @@ class GeneratorProperties { // "package" visibility
 				+ CheckIdDirective.class.getCanonicalName() 
 				+ ", " 
 				+ ErrorDirective.class.getCanonicalName() 
+				+ ", " 
+				+ CancelDirective.class.getCanonicalName()  // v 3.3.0
 				; // one or n directive(s) separated by a comma 
 	}	
 
@@ -61,17 +64,8 @@ class GeneratorProperties { // "package" visibility
 		Properties properties = new Properties();
 
 		//--- #include & #parse management
-		// Added 2016/09/29 LGU
-		// Set the name of the class that is designed to managed #parse and #include templates paths
-	
-		// REMOVED FOR GENERATOR ENGINE "NEW" TESTS
-		//properties.setProperty(RuntimeConstants.EVENTHANDLER_INCLUDE, IncludeEventImpl.class.getCanonicalName() );
-		
-		// Added 2016/09/29 LGU
-		// Force the templates path to "" instead of "."
-		// There's no path for #parse and #include 
-		// The full path is built by "IncludeEventImpl"
-		// properties.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, "" );		
+		// Force the templates path to "bundle folder" instead of "."
+		// Path for #parse and #include 
 		properties.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH, generatorTemplate.getBundleFolderAbsolutePath() );
 		
 		//--- Specific 'directives' management
@@ -79,7 +73,7 @@ class GeneratorProperties { // "package" visibility
 		properties.setProperty(USER_DIRECTIVE_NAME, USER_DIRECTIVE_VALUE);
 		
 		// To force the macro reloading for each execution (usefull for development mode, no perf constraint)
-		// Constant is VM_LIBRARY_AUTORELOAD  "velocimacro.library.autoreload";
+		// Constant for "autoreload" is VM_LIBRARY_AUTORELOAD 
 		properties.setProperty(RuntimeConstants.VM_LIBRARY_AUTORELOAD, "true");
 		
 		// To avoid logging ( no 'velocity.log' file )

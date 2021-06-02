@@ -13,30 +13,24 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.telosys.tools.generator.engine;
+package org.telosys.tools.generator.engine.directive;
 
 /**
+ * Exception thrown when the generation has been intentionally canceled in the template
  * 
  * @author Laurent GUERIN
+ * @since  3.3.0
  * 
  */
-public class GeneratorEngineException extends Exception 
+public class CancelDirectiveException extends RuntimeException 
 {
 	private static final long serialVersionUID = 1L;
 	
     /**
      * @param cause
      */
-    public GeneratorEngineException(String message) {
+    public CancelDirectiveException(String message) {
         super(message);
-    }
-
-    /**
-     * @param cause
-     */
-    public GeneratorEngineException(Throwable cause, String templateFileName) {
-        super("Generator engine error '" + cause.getClass().getSimpleName()
-        		+ "' in '" + templateFileName + "'", cause);
     }
 
 }

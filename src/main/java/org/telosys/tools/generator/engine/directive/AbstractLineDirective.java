@@ -34,6 +34,8 @@ import org.apache.velocity.runtime.parser.node.Node;
  */
 public abstract class AbstractLineDirective extends Directive {
 
+	private static final String INVALID_ARGUMENT = "invalid argument #" ;
+	
 	private final String directiveName ;
 	private final int    argumentsCount ;
 	
@@ -42,7 +44,7 @@ public abstract class AbstractLineDirective extends Directive {
 	 * @param directiveName
 	 * @param argumentsCount
 	 */
-	public AbstractLineDirective(String directiveName, int argumentsCount) {
+	protected AbstractLineDirective(String directiveName, int argumentsCount) {
 		super();
 		this.directiveName = directiveName;
 		this.argumentsCount = argumentsCount ;
@@ -73,7 +75,7 @@ public abstract class AbstractLineDirective extends Directive {
 			return String.valueOf(o);
 		}
 		else {
-			String message = "invalid argument #" + index + "( String expected )" ;
+			String message = INVALID_ARGUMENT + index + "( String expected )" ;
 			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
 		}
 	}
@@ -84,7 +86,7 @@ public abstract class AbstractLineDirective extends Directive {
 			return (Boolean) o;
 		}
 		else {
-			String message = "invalid argument #" + index + " (Boolean expected)" ;
+			String message = INVALID_ARGUMENT + index + " (Boolean expected)" ;
 			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
 		}
 	}
@@ -95,22 +97,9 @@ public abstract class AbstractLineDirective extends Directive {
 			return o ;
 		}
 		else {
-			String message = "invalid argument #" + index + "( argument is null )" ;
+			String message = INVALID_ARGUMENT + index + "( argument is null )" ;
 			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
 		}
 	}
-	
-	/*
-	 * EXEMPLE 
-	 *        Node childNode = node.jjtGetChild(0);
-        if ( childNode.getType() !=  ParserTreeConstants.JJTSTRINGLITERAL &&
-             childNode.getType() !=  ParserTreeConstants.JJTREFERENCE )
-        {
-           throw new TemplateInitException(
-                   "#" + getName() + "()  argument must be a string literal or reference", 
-                   context.getCurrentTemplateName(),
-                   childNode.getColumn(),
-                   childNode.getLine());
-        }
-	 */
+
 }

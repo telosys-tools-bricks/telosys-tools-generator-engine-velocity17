@@ -41,23 +41,23 @@ public class GeneratorTemplate {
 	/**
 	 * Checks the template definition validity <br>
 	 * Verifies if the bundle folder exists, if the template file exists in the bundle folder, etc...
-	 * @throws GeneratorEngineException
 	 */
-	protected void checkValidity() throws GeneratorEngineException {
+	protected void checkValidity() { // throws GeneratorEngineException {
 		checkBundleValidity();
 	}
 
 	/**
 	 * Checks the bundle folder validity
-	 * @throws GeneratorEngineException
 	 */
-	protected void checkBundleValidity() throws GeneratorEngineException {
+	protected void checkBundleValidity() { // throws GeneratorEngineException {
 		File bundleFolder = new File(bundleFolderAbsolutePath);
 		if ( ! bundleFolder.exists() ) {
-			throw new GeneratorEngineException("Bundle folder not found '" + bundleFolderAbsolutePath + "' ");
+			//throw new GeneratorEngineException("Bundle folder not found '" + bundleFolderAbsolutePath + "' ");
+			throw new InvalidBundleException("Bundle folder not found '" + bundleFolderAbsolutePath + "' ");
 		}
 		if ( ! bundleFolder.isDirectory() ) {
-			throw new GeneratorEngineException("Bundle folder is not a directory '" + bundleFolderAbsolutePath + "' ");
+			//throw new GeneratorEngineException("Bundle folder is not a directory '" + bundleFolderAbsolutePath + "' ");
+			throw new InvalidBundleException("Bundle folder is not a directory '" + bundleFolderAbsolutePath + "' ");
 		}
 	}
 

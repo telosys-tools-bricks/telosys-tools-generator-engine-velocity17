@@ -22,7 +22,7 @@ public class GeneratorEncodingTest {
 	}
 	//---------------------------------------------------------------------------------------
 	
-	public String generateFromTemplateFile(String bundleSubPath, String templateFile, GeneratorContext context) throws GeneratorEngineException {
+	public String generateFromTemplateFile(String bundleSubPath, String templateFile, GeneratorContext context) { //throws GeneratorEngineException {
 		System.out.println("Generation from template file "  );
 		System.out.println(" . bundle sub path : " + bundleSubPath );
 		System.out.println(" . template file   : " + templateFile );
@@ -37,7 +37,7 @@ public class GeneratorEncodingTest {
 	}
 	
 	@Test
-	public void testEncoding01() throws GeneratorEngineException {
+	public void testEncoding01() { // throws GeneratorEngineException {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-utf8-1.vm", getContext1());
 		String expected = 
 				  "abcdefghijk" + "\n"
@@ -47,7 +47,7 @@ public class GeneratorEncodingTest {
 	}
 
 	@Test
-	public void testEncoding02() throws GeneratorEngineException {
+	public void testEncoding02() { //throws GeneratorEngineException {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-utf8-2.vm", getContext2());
 		String expected = 
 				  " α β γ" + "\n"
@@ -56,7 +56,7 @@ public class GeneratorEncodingTest {
 	}
 
 	@Test
-	public void testEncoding03Iso88591() throws GeneratorEngineException {
+	public void testEncoding03Iso88591() { //throws GeneratorEngineException {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-iso-8859-1.vm", getContext1());
 		String expected = 
 				  " é à è ù" + "\n"

@@ -25,7 +25,8 @@ public class GeneratorDirectivesTest {
 
 	//---------------------------------------------------------------------------------------
 	
-	public GeneratorEngineException generateFromTemplateFile(String bundleSubPath, String templateFile) throws GeneratorEngineException {
+	//public GeneratorEngineException generateFromTemplateFile(String bundleSubPath, String templateFile) throws GeneratorEngineException {
+	public void generateFromTemplateFile(String bundleSubPath, String templateFile) {
 		System.out.println("Generation from template file "  );
 		System.out.println(" . bundle sub path : " + bundleSubPath );
 		System.out.println(" . template file   : " + templateFile );
@@ -33,129 +34,151 @@ public class GeneratorDirectivesTest {
 		System.out.println("GeneratorTemplate created "  );
 		GeneratorEngine generatorEngine = new GeneratorEngine();
 		System.out.println("Generation... "  );
-		GeneratorEngineException exceptionCatched = null ;
+//		GeneratorEngineException exceptionCatched = null ;
 		String result;
-		try {
-			result = generatorEngine.generate(template, getContext() );
-			System.out.println("Generation result : " );
-			System.out.println(result );
-		} catch (GeneratorEngineException e) {
-			e.printStackTrace();
-			exceptionCatched = e ;
-		}
-		return exceptionCatched ;
+//		try {
+//			result = generatorEngine.generate(template, getContext() );
+//			System.out.println("Generation result : " );
+//			System.out.println(result );
+//		} catch (GeneratorEngineException e) {
+//			e.printStackTrace();
+//			exceptionCatched = e ;
+//		}
+//		return exceptionCatched ;
+		result = generatorEngine.generate(template, getContext() );
+		System.out.println("Generation result : " );
+		System.out.println(result );
 	}
 	
 	//---------------------------------------------------------------------------------------
 	// Directive #error
 	//---------------------------------------------------------------------------------------
-	@Test 
-	public void testDirectiveError1() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-error1.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveError1() { //  throws GeneratorEngineException {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-error1.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-error1.vm") ;
 	}
 
-	@Test 
-	public void testDirectiveError2() throws GeneratorEngineException {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-error2.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof ParseErrorException );
+	@Test( expected=ParseErrorException.class)
+	public void testDirectiveError2() { //throws GeneratorEngineException {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-error2.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof ParseErrorException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-error2.vm") ;
 	}
 	
 	//---------------------------------------------------------------------------------------
 	// Directive #assertTrue
 	//---------------------------------------------------------------------------------------
 	@Test
-	public void testDirectiveAssertTrue1() throws Exception {
+	public void testDirectiveAssertTrue1() { //throws Exception {
 		System.out.println("Test directive '#assertTrue' : OK expected "  );
 		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-true1.vm");
 	}
 
-	@Test
-	public void testDirectiveAssertTrue2() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-true2.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveAssertTrue2() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-true2.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-true2.vm") ;
 	}
 
 	//---------------------------------------------------------------------------------------
 	// Directive #assertFalse
 	//---------------------------------------------------------------------------------------
 	@Test
-	public void testDirectiveAssertFalse1() throws Exception {
+	public void testDirectiveAssertFalse1() { // throws Exception {
 		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false1.vm");
 	}
 
-	@Test
-	public void testDirectiveAssertFalse2() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false2.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveAssertFalse2() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false2.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false2.vm") ;
 	}
 
-	@Test
-	public void testDirectiveAssertFalse3() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false3.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveAssertFalse3() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false3.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-assert-false3.vm") ;
 	}
 
 	//---------------------------------------------------------------------------------------
 	// Directive #using
 	//---------------------------------------------------------------------------------------
 	@Test
-	public void testDirectiveUsing1() throws Exception {
+	public void testDirectiveUsing1() { // throws Exception {
 		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using1.vm");
 	}
-	@Test
-	public void testDirectiveUsing2() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using2.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveUsing2() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using2.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using2.vm") ;
 	}
-	@Test
-	public void testDirectiveUsing3() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using3.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveUsing3() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using3.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using3.vm") ;
 	}
-	@Test
-	public void testDirectiveUsing4() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using4.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveUsing4() { //throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using4.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using4.vm") ;
 	}
-	@Test
-	public void testDirectiveUsing5() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using5.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveUsing5() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using5.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using5.vm") ;
 	}
-	@Test
-	public void testDirectiveUsing6() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using6.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveUsing6() { //throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using6.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-using6.vm") ;
 	}
 
 	//---------------------------------------------------------------------------------------
 	// Directive #checkId($entity)
 	//---------------------------------------------------------------------------------------
 	@Test
-	public void testDirectiveCheckId1() throws Exception {
+	public void testDirectiveCheckId1() { //throws Exception {
 		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id1.vm");
 	}
-	@Test
-	public void testDirectiveCheckId2() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id2.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+	
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveCheckId2() { //throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id2.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id2.vm") ;
 	}
-	@Test
-	public void testDirectiveCheckId3() throws Exception {
-		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id3.vm") ;
-		assertNotNull(exception);
-		assertTrue( exception.getCause() instanceof DirectiveException );
+
+	@Test( expected=DirectiveException.class)
+	public void testDirectiveCheckId3() { // throws Exception {
+//		GeneratorEngineException exception = generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id3.vm") ;
+//		assertNotNull(exception);
+//		assertTrue( exception.getCause() instanceof DirectiveException );
+		generateFromTemplateFile(DIRECTIVES_BUNDLE, "directive-check-id3.vm") ;
 	}
 }

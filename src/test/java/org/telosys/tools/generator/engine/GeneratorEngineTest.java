@@ -20,7 +20,7 @@ public class GeneratorEngineTest {
 
 	//---------------------------------------------------------------------------------------
 	
-	public void generateFromTemplateFile(String bundleSubPath, String templateFile) throws GeneratorEngineException {
+	public void generateFromTemplateFile(String bundleSubPath, String templateFile) { // throws GeneratorEngineException {
 		System.out.println("Generation from template file "  );
 		System.out.println(" . bundle sub path : " + bundleSubPath );
 		System.out.println(" . template file   : " + templateFile );
@@ -34,34 +34,34 @@ public class GeneratorEngineTest {
 	}
 	
 	@Test
-	public void test10TemplateFile() throws GeneratorEngineException {
+	public void test10TemplateFile()  { // throws GeneratorEngineException {
 		generateFromTemplateFile(BUNDLE1, "template-a1.vm");
 	}
 	@Test
-	public void test11TemplateFile() throws GeneratorEngineException {
+	public void test11TemplateFile()  { // throws GeneratorEngineException {
 		generateFromTemplateFile(BUNDLE1, "template-a1.vm");
 	}
 	@Test
-	public void test23TemplateFile() throws GeneratorEngineException {
+	public void test23TemplateFile()  { // throws GeneratorEngineException {
 		generateFromTemplateFile(BUNDLE1, "template-a2.vm");
 	}
 	@Test
-	public void test24TemplateFile() throws GeneratorEngineException {
+	public void test24TemplateFile()  { // throws GeneratorEngineException {
 		generateFromTemplateFile(BUNDLE1, "dir1/template-a3.vm");
 	}
 	@Test
-	public void test25TemplateFile() throws GeneratorEngineException {
+	public void test25TemplateFile()  { // throws GeneratorEngineException {
 		generateFromTemplateFile(BUNDLE1, "/dir1/template-a4.vm");
 	}
 
 	//--- TESTS WITH INVALID BUNDLE FOLDER
-	@Test( expected=GeneratorEngineException.class)
-	public void test81TemplateFile() throws GeneratorEngineException {
+	@Test( expected=InvalidBundleException.class)
+	public void test81TemplateFile()  { // throws GeneratorEngineException {
 		generateFromTemplateFile(BUNDLE0_INEX, "template-a1.vm");
 	}
 
-	@Test( expected=GeneratorEngineException.class)
-	public void test82TemplateFile() throws GeneratorEngineException {
+	@Test( expected=InvalidBundleException.class)
+	public void test82TemplateFile()  { // throws GeneratorEngineException {
 		// invalid bundle path
 		generateFromTemplateFile(BUNDLE0_INEX, "template-a2.vm");
 	}

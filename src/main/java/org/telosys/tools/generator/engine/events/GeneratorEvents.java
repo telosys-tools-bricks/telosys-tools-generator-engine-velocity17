@@ -40,7 +40,12 @@ public class GeneratorEvents {
 		//--- Event handler for "Invalid Reference"
 		ec.addInvalidReferenceEventHandler( new InvalidReferenceEventImpl() );
 		
-		//ec.addNullSetEventHandler( new NullSetEventImpl() );
+		// Other event handlers :
+		//  addEventHandler(ev)
+		//  addIncludeEventHandler(ev)
+		//  addMethodExceptionHandler(ev)
+		//  addNullSetEventHandler(ev)
+		//  addReferenceInsertionEventHandler(ev)
 		
 		//--- Finally let it attach itself to the context
 		ec.attachToContext( context );

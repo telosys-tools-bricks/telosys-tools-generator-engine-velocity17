@@ -47,7 +47,8 @@ public class GeneratorEngine {
 	 * @return
 	 * @throws Exception
 	 */
-	public String generate(GeneratorTemplate generatorTemplate, GeneratorContext generatorContext) throws GeneratorEngineException {
+	public String generate(GeneratorTemplate generatorTemplate, GeneratorContext generatorContext) {
+		//throws GeneratorEngineException {
 		
 		//------------------------------------------------------------------
 		// Workaround for Velocity error in OSGi environment 
@@ -61,12 +62,15 @@ public class GeneratorEngine {
 		// All the Velocity exceptions are "Runtime Exceptions"
 		try {			
 			return launchVelocityGeneration(generatorTemplate, generatorContext);
-		} catch (GeneratorEngineException e) {
-			throw e;
-		} catch (Exception e) {
-			throw new GeneratorEngineException(e, generatorTemplate.getTemplateFileNameInBundle());
-		}
-		finally {
+//		} catch (GeneratorEngineException e) {
+//			// Already a GeneratorEngineException : keep it as is 
+//			throw e;
+//		} catch (Exception e) {
+//			// Convert all other exceptions to GeneratorEngineException
+//			// including VelocityException, RuntimeException, CancelDirectiveException, etc
+//			throw new GeneratorEngineException(e, generatorTemplate.getTemplateFileNameInBundle());
+//		}
+		} finally {
 			//------------------------------------------------------------------
 			// End of Workaround for Velocity error in OSGi environment
 			//------------------------------------------------------------------
@@ -84,7 +88,8 @@ public class GeneratorEngine {
 	 * @return
 	 * @throws Exception
 	 */
-	private String launchVelocityGeneration(GeneratorTemplate generatorTemplate, GeneratorContext generatorContext) throws GeneratorEngineException {
+	private String launchVelocityGeneration(GeneratorTemplate generatorTemplate, GeneratorContext generatorContext) { 
+	//		throws GeneratorEngineException {
 		
 		//--- Check the template validity 
 		generatorTemplate.checkValidity();
@@ -103,6 +108,9 @@ public class GeneratorEngine {
 		//Template velocityTemplate = velocityEngine.getTemplate("dir1/template-a3.vm"); // OK
 		//Template velocityTemplate = velocityEngine.getTemplate("dir1/template-a4.vm"); // OK with include without SPECIFIC EVENT	
 		Template velocityTemplate = velocityEngine.getTemplate(generatorTemplate.getTemplateFileNameInBundle());
+		// getTemplate throws the following exceptions :
+		// . ResourceNotFoundException extends VelocityException
+		// . ParseErrorException extends VelocityException
 
 		//--- Create a VelocityContext from the given context
 		VelocityContext velocityContext = createVelocityContext(generatorContext);
@@ -112,6 +120,11 @@ public class GeneratorEngine {
         StringWriter result = new StringWriter();
         velocityTemplate.merge( velocityContext, result);
 		return result.toString() ;
+		
+		// velocityTemplate.merge(..) throws the following exceptions :
+		//  . ResourceNotFoundException > VelocityException > RuntimeException
+		//  . ParseErrorException       > VelocityException > RuntimeException
+		//  . MethodInvocationException > VelocityException > RuntimeException
 	}
 
 	/**
