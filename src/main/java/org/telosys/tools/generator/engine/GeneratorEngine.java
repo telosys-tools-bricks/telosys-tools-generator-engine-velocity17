@@ -48,28 +48,20 @@ public class GeneratorEngine {
 	 * @throws Exception
 	 */
 	public String generate(GeneratorTemplate generatorTemplate, GeneratorContext generatorContext) {
-		//throws GeneratorEngineException {
 		
 		//------------------------------------------------------------------
 		// Workaround for Velocity error in OSGi environment 
 		//------------------------------------------------------------------
 		Thread currentThread = Thread.currentThread();
 		ClassLoader originalClassLoader = currentThread.getContextClassLoader();
-		currentThread.setContextClassLoader(this.getClass().getClassLoader()); // Set the context ClassLoader for this Thread
+		// Set the context ClassLoader for this Thread
+		currentThread.setContextClassLoader(this.getClass().getClassLoader()); 
 		//------------------------------------------------------------------
 		
 		// Launch the Velocity generator and catch all possible exceptions
 		// All the Velocity exceptions are "Runtime Exceptions"
-		try {			
+		try {
 			return launchVelocityGeneration(generatorTemplate, generatorContext);
-//		} catch (GeneratorEngineException e) {
-//			// Already a GeneratorEngineException : keep it as is 
-//			throw e;
-//		} catch (Exception e) {
-//			// Convert all other exceptions to GeneratorEngineException
-//			// including VelocityException, RuntimeException, CancelDirectiveException, etc
-//			throw new GeneratorEngineException(e, generatorTemplate.getTemplateFileNameInBundle());
-//		}
 		} finally {
 			//------------------------------------------------------------------
 			// End of Workaround for Velocity error in OSGi environment
@@ -77,19 +69,18 @@ public class GeneratorEngine {
 			currentThread.setContextClassLoader(originalClassLoader); // Restore the original classLoader
 			//------------------------------------------------------------------
 		}
-}
+	}
 	
 	/**
 	 * Generates using the given template and context. <br>
 	 * The generation result is returned as a string. <br>
+	 * Throws only RuntimeExceptions (all VelocityExceptions are RuntimeExceptions) <br>
 	 * 
 	 * @param generatorTemplate
 	 * @param generatorContext
 	 * @return
-	 * @throws Exception
 	 */
 	private String launchVelocityGeneration(GeneratorTemplate generatorTemplate, GeneratorContext generatorContext) { 
-	//		throws GeneratorEngineException {
 		
 		//--- Check the template validity 
 		generatorTemplate.checkValidity();

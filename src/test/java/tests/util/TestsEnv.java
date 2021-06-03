@@ -1,4 +1,4 @@
-package tests.env;
+package tests.util;
 
 import java.io.File;
 import java.util.Properties;
@@ -10,15 +10,6 @@ import org.telosys.tools.commons.cfg.TelosysToolsCfgManager;
 
 public class TestsEnv {
 
-//	public final static String getTestsProxyPropertiesFile() {
-//		//return TESTS_ROOT_FOLDER + "/proxy.properties";
-//		return getExistingFileFullPath( "/proxy.properties" ) ;
-//	}
-	
-//	public final static String getFullFileName(String fileName) {
-//		return TESTS_ROOT_FOLDER + "/" + fileName ;
-//	}
-	
 	private final static String SRC_TEST_RESOURCES = "src/test/resources/" ;
 
 	/**
@@ -198,10 +189,8 @@ public class TestsEnv {
 	 */
 	public final static Properties loadSpecificProxyProperties()  {
 		
-		//File file = new File("src/test/resources/proxy.properties");
 		File file = getTestFile("proxy.properties");
 		System.out.println("Loading http properties from " + file.getAbsolutePath() +" ...");
-		//PropertiesManager pm = new PropertiesManager(TestsFolders.getTestsProxyPropertiesFile());
 		PropertiesManager pm = new PropertiesManager(file.getAbsolutePath());
 		Properties proxyProperties;
 		try {
@@ -214,14 +203,6 @@ public class TestsEnv {
 		}
 		return proxyProperties ;
 	}
-	
-//	/**
-//	 * Returns the 'telosys-tools.cfg' full file name 
-//	 * @return
-//	 */
-//	public final static String getTelosysToolsCfgFileName()  {
-//		return getTmpRootFolder() + "/telosys-tools.cfg" ;
-//	}
 	
 	/**
 	 * Returns the 'telosys-tools.cfg' file 
@@ -267,7 +248,6 @@ public class TestsEnv {
 		System.out.println("Loading configuration from folder : " + projectFolder.getAbsolutePath() );
 		TelosysToolsCfgManager cfgManager = new TelosysToolsCfgManager( projectFolder.getAbsolutePath() );
 		try {
-			//telosysToolsCfg = cfgManager.loadProjectConfig();
 			telosysToolsCfg = cfgManager.loadTelosysToolsCfg();
 		} catch (TelosysToolsException e) {
 			e.printStackTrace();

@@ -1,0 +1,14 @@
+
+## Template for 'assertTrue directive' test
+
+Beginning of template
+Bla bla bla
+
+Call methods : 
+$object.getName()
+$object.name
+
+Call method with exception : 
+$object.doWithException()
+
+End of template

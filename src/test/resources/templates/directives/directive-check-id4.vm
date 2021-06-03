@@ -10,7 +10,7 @@ Context values :
  - flagTrue = $flagTrue
  - flagFalse = $flagFalse
 
-## Invalid arg (entity expected)
-#checkId()
+## Invalid arg (not an entity)
+#checkId("aa")
 
 End of template

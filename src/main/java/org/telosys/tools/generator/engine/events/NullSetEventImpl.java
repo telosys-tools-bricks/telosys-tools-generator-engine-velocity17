@@ -34,7 +34,7 @@ public class NullSetEventImpl implements NullSetEventHandler {
 		// true if log message should be written, false otherwise
 		
 		// throws an exception instead
-		throw new RuntimeException( "#set( " + leftHandSide + " = " + righHandSide + " ) : Null value"  );
+		throw new NullSetException( "Cannot set '" + leftHandSide + "', '" + righHandSide + "' is invalid or null"  );
 	}
 
 }

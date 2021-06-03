@@ -46,6 +46,7 @@ public class InvalidReferenceEventImpl implements InvalidReferenceEventHandler {
 	 * - $name.length().foo : $name.length() returns an int => no 'foo' attribute  (property contains 'foo')
 	 * - #set ( $v = $foo ) when $foo doesn't exist
 	 */
+	@Override
 	public Object invalidGetMethod(Context context, String reference,
 			Object object, String property, Info info) {
 		
@@ -66,9 +67,10 @@ public class InvalidReferenceEventImpl implements InvalidReferenceEventHandler {
 	 * Examples : <br>
 	 * - #set ( $v = $nullValue )
 	 */
+	@Override
 	public boolean invalidSetMethod(Context context, String leftreference,
 			String rightreference, Info info) {
-		throw new InvalidReferenceException( errorMsg(info) + "cannot set '" + leftreference + "' - '" + rightreference + "'", info);
+		throw new InvalidReferenceException( errorMsg(info) + "cannot set '" + leftreference + "' from '" + rightreference + "'", info);
 	}
 
 	/**
@@ -77,6 +79,7 @@ public class InvalidReferenceEventImpl implements InvalidReferenceEventHandler {
 	 * Examples : <br>
 	 * - $foo.bar()  when $foo doesn't have a 'bar' method
 	 */
+	@Override
 	public Object invalidMethod(Context context, String reference, Object object,
 			String method, Info info) {
 		throw new InvalidReferenceException( errorMsg(info) + reference + " : no method '" + method + "'", info );

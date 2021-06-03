@@ -10,7 +10,7 @@ Context values :
  - flagTrue = $flagTrue
  - flagFalse = $flagFalse
 
-## entity1 has a PK
+## OK : entity1 has a PK
 #checkId($entity1)
 
 End of template

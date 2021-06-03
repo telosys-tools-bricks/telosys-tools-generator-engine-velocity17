@@ -58,13 +58,7 @@ public class CheckIdDirective extends AbstractLineDirective {
 		Object o = getArgument(0, node, context);
 		
 		// This directive works by introspection in order to avoid cyclic reference with generator project
-		// 1) Check class name
-		String simpleName = o.getClass().getSimpleName() ;
-		if ( ! "EntityInContext".equals(simpleName) ) {
-			String message = "Invalid argument (class '" + simpleName +"' Entity expected) " ;
-			throw new DirectiveException( message, this.getName(), node.getTemplateName(), node.getLine() );
-		}
-		// 2) Invoke "hasPrimaryKey" method
+		// Try to invoke "hasPrimaryKey" method
 		boolean entityHasPrimaryKey;
 		try {
 			entityHasPrimaryKey = MethodInvoker.invokeBooleanGetter(o, "hasPrimaryKey");

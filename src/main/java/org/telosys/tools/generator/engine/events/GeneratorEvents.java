@@ -40,12 +40,18 @@ public class GeneratorEvents {
 		//--- Event handler for "Invalid Reference"
 		ec.addInvalidReferenceEventHandler( new InvalidReferenceEventImpl() );
 		
+		// "InvalidReferenceEvent" is better than "NullSetEvent" (has line number info)
+		// ec.addNullSetEventHandler with  NullSetEventImpl not used
+		
+		// ec.addMethodExceptionHandler( new MethodExceptionEventHandlerImpl() ); // v 3.3.0
+		// Useless ( encapsulated in Velocity MethodInvocationException )
+		// Velocity MethodInvocationException -> Telosys MethodException --> exception thrown by the method
+
 		// Other event handlers :
-		//  addEventHandler(ev)
+		//  addEventHandler(ev) : generic (arg = any event)
 		//  addIncludeEventHandler(ev)
-		//  addMethodExceptionHandler(ev)
-		//  addNullSetEventHandler(ev)
 		//  addReferenceInsertionEventHandler(ev)
+		
 		
 		//--- Finally let it attach itself to the context
 		ec.attachToContext( context );

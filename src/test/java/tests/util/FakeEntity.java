@@ -1,4 +1,4 @@
-package org.telosys.tools.generator.engine.fake;
+package tests.util;
 
 /**
  * Fake 'EntityInContext' class for tests 
@@ -6,11 +6,11 @@ package org.telosys.tools.generator.engine.fake;
  * @author laguerin
  *
  */
-public class EntityInContext {
+public class FakeEntity {
 
 	private final boolean flag ;
 	
-	public EntityInContext(boolean flag) {
+	public FakeEntity(boolean flag) {
 		this.flag = flag ;
 	}
 

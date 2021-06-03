@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import tests.util.GenerationUtil;
+
 public class GeneratorEncodingTest {
 	
 	private static final String BUNDLE = "templates/encoding" ;
@@ -20,24 +22,15 @@ public class GeneratorEncodingTest {
         context.put("name", "δεη");
         return context ;
 	}
-	//---------------------------------------------------------------------------------------
 	
-	public String generateFromTemplateFile(String bundleSubPath, String templateFile, GeneratorContext context) { //throws GeneratorEngineException {
-		System.out.println("Generation from template file "  );
-		System.out.println(" . bundle sub path : " + bundleSubPath );
-		System.out.println(" . template file   : " + templateFile );
-		GeneratorTemplate template = TemplatesTestsUtil.buildGeneratorTemplateFromFile(bundleSubPath, templateFile);
-		System.out.println("GeneratorTemplate created "  );
-		GeneratorEngine generatorEngine = new GeneratorEngine();
-		System.out.println("Generation... "  );
-		String result = generatorEngine.generate(template, context );
-		System.out.println("Generation result : " );
-		System.out.println(result );
-		return result;
+	private String generateFromTemplateFile(String bundleSubPath, String templateFile, GeneratorContext context) {
+		return GenerationUtil.generateFromTemplateFile(context, bundleSubPath, templateFile);
 	}
-	
+
+	//---------------------------------------------------------------------------------------
+
 	@Test
-	public void testEncoding01() { // throws GeneratorEngineException {
+	public void testEncoding01() {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-utf8-1.vm", getContext1());
 		String expected = 
 				  "abcdefghijk" + "\n"
@@ -47,7 +40,7 @@ public class GeneratorEncodingTest {
 	}
 
 	@Test
-	public void testEncoding02() { //throws GeneratorEngineException {
+	public void testEncoding02() {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-utf8-2.vm", getContext2());
 		String expected = 
 				  " α β γ" + "\n"
@@ -56,7 +49,7 @@ public class GeneratorEncodingTest {
 	}
 
 	@Test
-	public void testEncoding03Iso88591() { //throws GeneratorEngineException {
+	public void testEncoding03Iso88591() { 
 		String s = generateFromTemplateFile(BUNDLE, "encoding-iso-8859-1.vm", getContext1());
 		String expected = 
 				  " é à è ù" + "\n"

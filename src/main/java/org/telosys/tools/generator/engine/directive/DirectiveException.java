@@ -31,8 +31,12 @@ public class DirectiveException extends RuntimeException {
 	private final String template ;
 	private final int    line ;
 	
-	/**
+    /**
+     * Constructor
      * @param message
+     * @param directiveName
+     * @param template
+     * @param line
      */
     public DirectiveException(String message, String directiveName, String template, int line )
     {
