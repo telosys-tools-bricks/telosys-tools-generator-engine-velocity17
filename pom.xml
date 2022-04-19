@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.telosys</groupId>
         <artifactId>telosys-tools-parent</artifactId>
-		<version>3.x.x</version>   <!-- parent version is always "3.x.x"-->   
+		<version>4.x.x</version>
 		<relativePath>../telosys-tools-parent/pom.xml</relativePath>
     </parent>
 
