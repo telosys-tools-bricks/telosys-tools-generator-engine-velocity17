@@ -13,7 +13,7 @@
 
 	<name>telosys-tools-generator-engine-velocity17</name>
 	<artifactId>telosys-tools-generator-engine-velocity17</artifactId>
-	<version>4.0.1</version>	
+	<version>4.1.0</version>	
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -24,43 +24,18 @@
 			<artifactId>telosys-tools-commons</artifactId>
 		</dependency>
 
-		<!-- 
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-		</dependency>
-		-->
 		<!-- VELOCITY -->
 		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>
 		</dependency>
-		
-		<!-- Jakarta ORO - optional. 
-		Needed when using the org.apache.velocity.convert.WebMacro template conversion utility. -->
-		<!-- 
-		<dependency>
-			<groupId>oro</groupId>
-			<artifactId>oro</artifactId>
-			<version>2.0.8</version>
-		</dependency>
-		 -->
-		
-		<!-- 
-	    <dependency>
-			<groupId>logkit</groupId>
-			<artifactId>logkit</artifactId>
-			<version>2.0</version>
-	    </dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.12</version>
-			<scope>provided</scope>
-		</dependency>
-		 -->
-		 
+		<!-- Removed Velocity dependencies : 
+		     - Jakarta ORO (artifactId:oro) - optional. 
+		       Needed when using the org.apache.velocity.convert.WebMacro template conversion utility. 
+		     - LogKit (artifactId:logkit)		
+		     - Log4J (artifactId:log4j)		
+		-->
 	</dependencies>
 
 </project>
