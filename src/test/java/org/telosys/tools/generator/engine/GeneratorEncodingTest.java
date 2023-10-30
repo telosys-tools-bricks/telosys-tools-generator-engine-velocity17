@@ -32,9 +32,9 @@ public class GeneratorEncodingTest {
 	@Test
 	public void testEncoding01() {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-utf8-1.vm", getContext1());
-		String expected = 
-				  "abcdefghijk" + "\n"
-				+ "é è ê ë à ç ù" + "\n"
+		String expected =
+				  "abcdefghijk" + System.lineSeparator()
+				+ "é è ê ë à ç ù" + System.lineSeparator()
 				+ "name = éàùç";
 		assertEquals(expected, s);
 	}
@@ -43,7 +43,7 @@ public class GeneratorEncodingTest {
 	public void testEncoding02() {
 		String s = generateFromTemplateFile(BUNDLE, "encoding-utf8-2.vm", getContext2());
 		String expected = 
-				  " α β γ" + "\n"
+				  " α β γ" + System.lineSeparator()
 				+ "name = δεη";
 		assertEquals(expected, s);
 	}
